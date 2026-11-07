@@ -1,0 +1,1489 @@
+# TECHZONE — COMPLETE INTERACTIVE ARABIC E-COMMERCE WEBSITE
+
+## 1. PROJECT OBJECTIVE
+
+Build a complete, professional, modern, fully interactive Arabic electronics e-commerce website called **TechZone**.
+
+This is a university project prototype that will later be implemented using PHP Procedural and MySQL.
+
+**IMPORTANT: This must be a fully functional interactive prototype, NOT a static design, mockup, or collection of disconnected pages.**
+
+Every visible button, form, navigation link, search field, filter, dropdown, modal, quantity selector, product management action, and order management action must perform its intended function.
+
+The website must support two roles:
+- Customer
+- Admin
+
+Visitors (guests) can browse and add products to their shopping cart without registering.
+
+There is only ONE store. This is NOT a marketplace or multi-vendor platform.
+
+### Technology Requirements
+
+Use:
+- React, TypeScript, and Tailwind CSS if supported by the design platform.
+- Reusable components and clean project structure.
+- Client-side state management.
+- Browser localStorage for persistent demo data.
+- sessionStorage where appropriate for temporary navigation state.
+- Responsive layouts for desktop, tablet, and mobile.
+
+Do NOT use:
+- MySQL
+- Supabase
+- Firebase
+- External databases
+- Real backend APIs
+- Payment gateways
+- Server authentication
+- Laravel
+
+All features must work locally with simulated application logic and realistic sample data.
+
+The application should be structured so that it can later be recreated using PHP Procedural and MySQL.
+
+---
+
+# 2. LANGUAGE AND DIRECTION
+
+The entire website must use **Arabic as the primary interface language**.
+
+Requirements:
+
+- Set `lang="ar"`.
+- Set `dir="rtl"`.
+- All navigation menus, buttons, headings, forms, labels, placeholders, messages, notifications, tables, and dashboards must be in Arabic.
+- Use a modern Arabic font such as **Cairo**.
+- Product names, brands, and categories may contain Arabic or English text depending on what the Admin enters.
+- Do NOT automatically translate product names entered by the Admin.
+- English product names and model numbers must display correctly within the Arabic RTL layout.
+- Prices must use Jordanian Dinar (JOD / د.أ).
+- The interface must feel like a genuine modern Arabic e-commerce website, not an English website with translated labels.
+- Use natural Arabic suitable for customers in Jordan.
+
+Examples:
+
+Home → الرئيسية  
+Products → المنتجات  
+Categories → التصنيفات  
+Shopping Cart → سلة التسوق  
+My Orders → طلباتي  
+My Profile → حسابي  
+Login → تسجيل الدخول  
+Register → إنشاء حساب  
+Checkout → إتمام الطلب  
+Add to Cart → أضف إلى السلة  
+Out of Stock → غير متوفر  
+Admin Dashboard → لوحة التحكم
+
+---
+
+# 3. VISUAL IDENTITY AND DESIGN SYSTEM
+
+## Brand
+
+Website name: **TechZone**
+
+Design direction:
+- Modern electronics store
+- Professional
+- Clean
+- Premium but approachable
+- Technology-inspired
+- Visually polished
+- Smooth interactions
+- Consistent spacing and typography
+
+Avoid:
+- Generic template appearance
+- Excessive gradients
+- Overcrowded sections
+- Unnecessary animations
+- Inconsistent colors
+- Large empty areas
+- Unreadable text
+
+## Light Mode Colors
+
+Background: `#F8FAFC`  
+Cards: `#FFFFFF`  
+Primary text: `#0F172A`  
+Secondary text: `#64748B`  
+Primary blue: `#2563EB`  
+Accent cyan: `#06B6D4`  
+Borders: `#E2E8F0`
+
+## Dark Mode Colors
+
+Background: `#0B1120`  
+Cards: `#1E293B`  
+Primary text: `#F8FAFC`  
+Secondary text: `#94A3B8`  
+Primary blue: `#2563EB`  
+Accent cyan: `#38BDF8`  
+Borders: `#334155`
+
+## Theme Switching
+
+Implement a fully working Light Mode / Dark Mode switch.
+
+Requirements:
+
+1. Place a sun/moon theme toggle in the main Navbar.
+2. Allow users to switch themes instantly.
+3. Save the selected theme in localStorage.
+4. Preserve the selected theme after page refresh.
+5. Apply the selected theme across ALL Customer and Admin pages.
+6. Update backgrounds, cards, tables, inputs, dropdowns, modals, borders, and text colors.
+7. Ensure accessibility and readable contrast in both themes.
+
+Default theme: Light Mode.
+
+## UI Components
+
+Use:
+- Rounded cards
+- Soft shadows
+- Modern buttons
+- Clear hover states
+- Smooth transitions
+- Attractive product cards
+- Professional form layouts
+- Responsive product grids
+- Elegant modals
+- Toast notifications
+- Loading states where useful
+- Empty states
+- Confirmation dialogs
+- Status badges
+- Consistent icons
+
+Use realistic electronics product photography, not placeholder rectangles.
+
+---
+
+# 4. APPLICATION ARCHITECTURE
+
+Create two main areas:
+
+## Customer Storefront
+
+Accessible to guests and customers.
+
+Pages:
+1. Home
+2. Products
+3. Product Details
+4. Shopping Cart
+5. Login
+6. Register
+7. Checkout
+8. My Orders
+9. Order Details
+10. My Profile
+
+## Admin Panel
+
+Accessible only to the simulated Admin account.
+
+Pages:
+11. Admin Dashboard
+12. Manage Products
+13. Add/Edit Product
+14. Manage Categories
+15. Manage Orders
+16. Manage Users
+
+Use working client-side routing.
+
+All pages must be connected through actual navigation.
+
+Do not create dead links or buttons that do nothing.
+
+---
+
+# 5. DEMO DATA AND LOCAL PERSISTENCE
+
+Since there is no database, create a realistic local data system.
+
+Use localStorage to persist:
+- Products
+- Categories
+- Product variants
+- Product images
+- Customer accounts
+- Demo authentication state
+- Orders
+- Product inventory
+- Product visibility
+- Theme preference
+
+Use a separate temporary cart state, with persistence for the current browser session.
+
+Seed the application with realistic sample data on first launch only.
+
+IMPORTANT:
+
+- Do not overwrite user changes when refreshing the page.
+- If Admin adds a product, it must appear in the Customer storefront immediately.
+- If Admin edits a product, the updated information must appear everywhere.
+- If Admin changes stock, product availability must update everywhere.
+- If a customer places an order, the order must appear in both the Customer and Admin views.
+- If Admin updates an order status, the Customer must see the updated status.
+- If an order is cancelled, stock must be restored.
+- If Admin adds a category, it must appear in category management, product forms, and storefront filters.
+- If Admin hides a product, it must disappear from the storefront.
+
+All data must be shared between the Customer and Admin interfaces through one consistent local application state.
+
+Do not implement isolated mock data separately for each page.
+
+Use unique IDs for all entities.
+
+---
+
+# 6. DEMO ACCOUNTS AND AUTHENTICATION
+
+Implement simulated login and registration.
+
+Create one preconfigured Admin account.
+
+Demo Admin credentials:
+
+Email: `admin@techzone.demo`  
+Password: `Admin123!`
+
+Create a few sample Customer accounts with clearly documented demo credentials.
+
+Provide a convenient demo account switcher or login hints for testing.
+
+This is prototype-only authentication, not real security.
+
+Do not pretend that localStorage authentication is production secure.
+
+## Registration
+
+Fields:
+- Full Name
+- Email
+- Password
+- Confirm Password
+
+Validation:
+- All fields required
+- Valid email
+- Unique email
+- Password minimum 8 characters
+- Password confirmation must match
+
+Only Customer accounts can register.
+
+After successful registration:
+- Create the Customer account.
+- Log in automatically.
+- Redirect to Checkout if registration started from Checkout.
+- Otherwise redirect to Home.
+
+## Login
+
+Fields:
+- Email
+- Password
+
+After login:
+- Admin → Admin Dashboard
+- Customer → Home or previously requested Checkout
+
+Show clear error messages for invalid credentials.
+
+## Logout
+
+Clear the current authentication session.
+
+Do not delete products, categories, orders, or other stored demo data.
+
+---
+
+# 7. SHARED STOREFRONT LAYOUT
+
+## Navbar
+
+Include:
+- TechZone logo
+- الرئيسية
+- المنتجات
+- Product search
+- Shopping cart icon with live item count
+- Theme toggle
+- Login/Register for guests
+- Account dropdown for logged-in customers
+
+Customer account dropdown:
+- حسابي
+- طلباتي
+- تسجيل الخروج
+
+Navbar must be responsive.
+
+On mobile:
+- Use a working hamburger menu.
+- Preserve access to search, cart, account, and theme toggle.
+
+## Footer
+
+Include:
+- TechZone brand
+- Short Arabic store description
+- Quick navigation links
+- Simple contact information section
+- Copyright text
+
+---
+
+# 8. HOME PAGE
+
+Create an attractive Arabic homepage.
+
+## Hero Section
+
+Include:
+- Strong Arabic headline about modern electronics.
+- Short supporting description.
+- High-quality electronics imagery.
+- Primary CTA: تسوّق الآن
+- Secondary CTA if useful.
+
+Both buttons must navigate correctly.
+
+## Categories Section
+
+Display category cards dynamically from local data.
+
+Initial categories:
+- Headphones
+- Keyboards
+- Mice
+- Chargers
+- Smartwatches
+
+Category names may appear in Arabic or English depending on stored data.
+
+Clicking a category opens the Products page with the corresponding filter applied.
+
+## Featured Products
+
+Display selected products in attractive product cards.
+
+Each card includes:
+- Main image
+- Product name
+- Brand
+- Price in JOD
+- Availability
+- View Details action
+- Add to Cart action when a valid color can be selected
+
+If the product has multiple colors, require a color selection before adding it to the cart.
+
+## Additional Requirements
+
+- Show real product data from local state.
+- Exclude inactive products.
+- Display Out of Stock correctly.
+- Include appropriate empty states.
+- Make the page responsive.
+
+---
+
+# 9. PRODUCTS PAGE
+
+Build a fully functional product catalog.
+
+## Product Cards
+
+Each card must display:
+- Main product image
+- Product name
+- Brand
+- Category
+- Price
+- Stock availability
+- View Details
+
+A product must appear only once even if it has multiple color variants.
+
+## Search
+
+Search products by name.
+
+Search must work with Arabic and English product names.
+
+## Filters
+
+Implement fully functional filters:
+
+1. Category
+2. Brand
+3. Minimum Price
+4. Maximum Price
+5. Color
+6. Availability
+
+Availability options:
+- All
+- In Stock
+- Out of Stock
+
+## Sorting
+
+Options:
+- Newest
+- Price: Low to High
+- Price: High to Low
+- Name: A to Z
+
+## Combined Filtering
+
+All filters must work together.
+
+Example:
+
+If a customer selects:
+- Category: Headphones
+- Color: Black
+- Availability: In Stock
+
+Show only headphones that have an available black variant.
+
+## Pagination
+
+Display approximately 12 products per page.
+
+Pagination must preserve filters and sorting.
+
+## Empty States
+
+Display an Arabic message when no products match.
+
+Include a working Clear Filters button.
+
+---
+
+# 10. PRODUCT DETAILS PAGE
+
+Create a professional product details page.
+
+## Image Gallery
+
+Each product supports multiple images.
+
+Display:
+- Large main image
+- Thumbnail images
+- Clickable thumbnails
+- Image enlargement or lightbox
+
+Images belong to the product, not individual color variants.
+
+## Product Information
+
+Display:
+- Product name
+- Brand
+- Category
+- Description
+- Specifications within description
+- Price
+- Available colors
+- Stock per selected color
+- Quantity selector
+
+## Product Variants
+
+Each color must have:
+- Unique variant ID
+- Color name
+- Independent stock quantity
+
+Example:
+
+Product: Wireless Headphones  
+Price: 25 JOD
+
+Black: 1 unit  
+Blue: 5 units  
+White: 0 units
+
+All colors have the same product price.
+
+## Color Selection
+
+Customers must select an available color.
+
+If a color has zero stock:
+- Display غير متوفر
+- Disable purchasing that color
+
+## Quantity Selector
+
+Minimum quantity: 1.
+
+Maximum quantity: available stock of the selected color.
+
+If a customer requests 3 units while only 1 is available:
+
+Display:
+
+"الكمية المطلوبة غير متوفرة. المتوفر حاليًا قطعة واحدة فقط."
+
+Prevent adding more than the available quantity.
+
+## Add to Cart
+
+On click:
+1. Validate selected color.
+2. Validate quantity.
+3. Check current stock.
+4. Add the selected variant to cart.
+5. Show success toast.
+6. Update cart badge immediately.
+
+If the same product and color already exist in the cart, merge quantities.
+
+Different colors must remain separate cart items.
+
+---
+
+# 11. SHOPPING CART PAGE
+
+Build a fully interactive cart.
+
+Each cart item must show:
+- Product image
+- Product name
+- Selected color
+- Unit price
+- Quantity selector
+- Item subtotal
+- Remove button
+
+## Functionality
+
+- Increase quantity
+- Decrease quantity
+- Remove item
+- Recalculate totals immediately
+- Continue Shopping
+- Proceed to Checkout
+
+## Inventory Validation
+
+Do not allow quantity greater than current variant stock.
+
+If stock changes after an item is added to cart:
+- Show a warning.
+- Display the currently available quantity.
+- Require the customer to correct the quantity before Checkout.
+
+If a product is inactive or unavailable:
+- Clearly identify the problem.
+- Prevent checkout until the cart is corrected.
+
+## Empty Cart
+
+Show:
+"سلة التسوق فارغة"
+
+Include a working shopping button.
+
+## Guest Cart
+
+Guests can add items without logging in.
+
+Preserve the cart when the guest navigates to Login or Register.
+
+---
+
+# 12. CHECKOUT PAGE
+
+Checkout is available only to logged-in Customers.
+
+If a guest clicks Checkout:
+- Redirect to Login/Register.
+- Preserve cart.
+- Return to Checkout after successful authentication.
+
+## Delivery Form
+
+Fields:
+- Full Name
+- Phone Number
+- City
+- Full Address
+- Order Notes (optional)
+
+Prefill Full Name from the Customer account.
+
+Allow editing recipient name without modifying account profile.
+
+## Payment Method
+
+Cash on Delivery only.
+
+Display:
+"الدفع عند الاستلام"
+
+Do not implement online payment.
+
+## Order Summary
+
+Show:
+- Products
+- Selected colors
+- Quantities
+- Unit prices
+- Subtotals
+- Delivery fee: 0 JOD
+- Total amount
+
+## Place Order
+
+When clicking تأكيد الطلب:
+
+1. Validate delivery fields.
+2. Validate cart is not empty.
+3. Recheck every product and variant.
+4. Recheck current stock.
+5. Recalculate prices.
+6. Prevent purchasing inactive products.
+7. Create a new order.
+8. Create order items.
+9. Save snapshots of product name, color, and purchase price.
+10. Decrease stock of each purchased variant.
+11. Set order status to Pending.
+12. Clear the cart only after successful order creation.
+13. Show order confirmation.
+
+If any validation fails:
+- Do not create a partial order.
+- Do not decrease stock.
+- Show a clear error.
+- Keep the cart intact.
+
+Simulate atomic order creation in the local state.
+
+## Confirmation
+
+Show:
+- Success message
+- Order number
+- Total
+- Pending status
+- View My Orders button
+
+---
+
+# 13. MY ORDERS PAGE
+
+Only authenticated Customers can access this page.
+
+IMPORTANT BUSINESS RULE:
+
+Customers must see ONLY ACTIVE orders.
+
+Visible statuses:
+- Pending
+- Processing
+- Shipped
+
+Hidden statuses:
+- Delivered
+- Cancelled
+
+Delivered and Cancelled orders must remain stored and visible to Admin.
+
+## Order Cards
+
+Show:
+- Order number
+- Order date
+- Total
+- Current status
+- View Details
+- Cancel Order when allowed
+
+## Cancellation Rule
+
+Customer cancellation is allowed only when BOTH conditions are true:
+
+1. Status is Pending.
+2. Less than or equal to 2 hours have passed since order creation.
+
+Once the order becomes Processing, cancellation is no longer allowed.
+
+## Cancellation Process
+
+On Cancel:
+- Show confirmation modal.
+- Revalidate status and time.
+- Set order status to Cancelled.
+- Restore stock to each purchased variant.
+- Remove order from the Customer active orders list.
+- Keep the order in Admin records.
+
+Stock must not be restored twice.
+
+## Empty State
+
+Show:
+"لا توجد لديك طلبات نشطة حاليًا"
+
+Include a button to browse products.
+
+---
+
+# 14. ORDER DETAILS PAGE
+
+Show details of a specific active Customer order.
+
+Include:
+- Order number
+- Order date and time
+- Status
+- Ordered products
+- Product images
+- Selected colors
+- Quantities
+- Purchase prices
+- Subtotals
+- Total amount
+- Payment method
+- Delivery name
+- Phone
+- City
+- Address
+- Notes
+
+Show cancellation action only when allowed.
+
+If the order is Delivered or Cancelled, customers must not access it even through a direct URL.
+
+Only the owner of the order can view it.
+
+Admin can still view all orders through Admin Manage Orders.
+
+---
+
+# 15. MY PROFILE PAGE
+
+Authenticated Customer only.
+
+## Account Information
+
+Display:
+- Full Name
+- Email
+
+## Edit Profile
+
+Allow:
+- Update full name
+- Update email
+
+Validate email uniqueness and format.
+
+## Change Password
+
+Fields:
+- Current Password
+- New Password
+- Confirm New Password
+
+Validate:
+- Current password
+- New password minimum 8 characters
+- Password confirmation
+
+Show success/error messages.
+
+Do not add:
+- Profile pictures
+- Account deletion
+- Role changing
+
+---
+
+# 16. ADMIN PANEL DESIGN
+
+Create a separate professional Arabic Admin interface.
+
+Use:
+- RTL sidebar on the right
+- Top bar
+- Theme toggle
+- Admin profile indicator
+- Responsive navigation
+- Clear tables
+- Action buttons
+- Confirmation modals
+- Success/error toasts
+
+Admin Sidebar:
+
+1. لوحة التحكم
+2. إدارة المنتجات
+3. إدارة التصنيفات
+4. إدارة الطلبات
+5. إدارة المستخدمين
+6. تسجيل الخروج
+
+Admin must not access Customer checkout as an Admin.
+
+Customer must not access Admin pages.
+
+---
+
+# 17. ADMIN DASHBOARD
+
+Create a fully functional Dashboard.
+
+## Statistics
+
+Display:
+- Total Products
+- Total Orders
+- Total Customers
+- Total Sales
+
+Total Sales must include only Delivered orders.
+
+Calculate all statistics dynamically from local data.
+
+## Recent Orders
+
+Show:
+- Order number
+- Customer name
+- Date
+- Amount
+- Status
+- View Details action
+
+## Low Stock Alerts
+
+Show product variants with stock of 5 units or fewer.
+
+Example:
+
+Wireless Headphones — Black — 1  
+Gaming Keyboard — White — 3  
+Wireless Mouse — Blue — 0
+
+Make alerts update immediately when Admin changes stock or orders are placed/cancelled.
+
+No charts required.
+
+---
+
+# 18. ADMIN MANAGE PRODUCTS PAGE
+
+Create a product management table.
+
+Columns:
+- Main image
+- Product name
+- Category
+- Brand
+- Price
+- Total stock
+- Active/Inactive status
+- Actions
+
+## Actions
+
+- Search products
+- Filter by category
+- Add Product
+- Edit Product
+- Hide Product
+- Reactivate Product
+- View stock information
+
+## Stock
+
+Total stock = sum of all color variant stock quantities.
+
+Each color has independent stock.
+
+## Hide Product
+
+Use an `is_active` property.
+
+Do not permanently delete products.
+
+When Admin hides a product:
+- Remove it from Customer storefront.
+- Remove it from search results.
+- Prevent adding it to cart.
+- Keep its order history intact.
+
+Allow reactivation.
+
+Use confirmation dialogs.
+
+---
+
+# 19. ADMIN ADD / EDIT PRODUCT PAGE
+
+Use a shared form for adding and editing products.
+
+## Product Fields
+
+- Product Name
+- Category
+- Brand
+- Price (JOD)
+- Description
+- Product Images
+- Color Variants
+- Stock per Color
+
+## Multiple Product Images
+
+Admin must be able to:
+- Upload multiple images
+- Preview images
+- Select one primary image
+- Add more images
+- Remove images
+- Change primary image
+
+At least one image is required.
+
+Support local image uploads in the prototype.
+
+Use appropriate client-side image persistence, and handle browser storage limitations gracefully.
+
+## Product Colors
+
+Admin must be able to:
+- Add color rows dynamically
+- Enter color name
+- Enter stock quantity
+- Remove unused color rows
+- Edit existing stock
+
+Each color must have a unique variant ID.
+
+Prevent duplicate colors for the same product.
+
+Stock cannot be negative.
+
+## Price
+
+All colors of the same product share one price.
+
+## Validation
+
+Require:
+- Product name
+- Category
+- Brand
+- Valid positive price
+- Description
+- At least one image
+- At least one color
+- Valid stock quantities
+
+## Save Behavior
+
+When Admin adds a product:
+- Save it to local application data.
+- Show success notification.
+- Redirect to Manage Products.
+- Display it immediately in the Customer storefront if active.
+
+When Admin edits a product:
+- Update the existing product.
+- Preserve its ID.
+- Update all relevant pages.
+
+If a variant has historical orders, do not destroy its identity or historical references.
+
+---
+
+# 20. ADMIN MANAGE CATEGORIES PAGE
+
+Build a functional category management interface.
+
+Features:
+- View categories
+- Add category
+- Edit category name
+- Delete unused category
+- Show product count per category
+
+## Validation
+
+- Category name required.
+- Category name must be unique.
+- Prevent deleting categories associated with products, including inactive products.
+
+When a category is added or renamed:
+- Update the storefront.
+- Update Products filters.
+- Update Add/Edit Product dropdowns.
+
+---
+
+# 21. ADMIN MANAGE ORDERS PAGE
+
+Admin must see ALL orders, including:
+- Pending
+- Processing
+- Shipped
+- Delivered
+- Cancelled
+
+## Orders Table
+
+Show:
+- Order number
+- Customer
+- Date
+- Total
+- Status
+- View Details
+- Update Status
+
+## Filtering
+
+Allow filtering by status.
+
+## Order Details
+
+Show:
+- Customer information
+- Delivery information
+- Ordered products
+- Colors
+- Quantities
+- Purchase prices
+- Total
+- Payment method
+- Current status
+
+## Status Workflow
+
+Pending → Processing → Shipped → Delivered
+
+Cancelled is allowed only from Pending.
+
+Prevent invalid status transitions.
+
+Delivered and Cancelled are final statuses.
+
+## Admin Cancellation
+
+Admin may cancel a Pending order before processing starts, even if more than two hours have passed.
+
+When cancelling:
+- Update status to Cancelled.
+- Restore all purchased variant quantities.
+- Preserve order history.
+- Prevent duplicate stock restoration.
+
+## Customer Synchronization
+
+If Admin changes Pending to Processing:
+- Customer sees Processing.
+- Customer cancellation becomes unavailable.
+
+If Admin changes Shipped to Delivered:
+- The order disappears from Customer My Orders.
+- It remains visible in Admin Manage Orders.
+- Dashboard sales statistics update.
+
+---
+
+# 22. ADMIN MANAGE USERS PAGE
+
+Build a read-only Customer management interface.
+
+## Users Table
+
+Show:
+- Customer full name
+- Email
+- Registration date
+- Total orders
+- View Details
+
+## Search
+
+Search by name or email.
+
+## Customer Details
+
+Show:
+- Name
+- Email
+- Registration date
+- Number of orders
+
+## Restrictions
+
+Admin cannot:
+- Delete Customer accounts
+- Edit Customer personal information
+- Change passwords
+- Change roles
+
+Do not display Admin accounts in the Customer management table.
+
+Do not display passwords.
+
+---
+
+# 23. INVENTORY RULES — CRITICAL
+
+Inventory management is one of the most important features.
+
+Every color variant must have independent stock.
+
+Example:
+
+Product: Wireless Headphones
+
+Black: 1  
+Blue: 5  
+White: 0
+
+If Customer selects Black and requests 3 units:
+
+Show an Arabic warning:
+
+"الكمية المطلوبة غير متوفرة، المتوفر حاليًا قطعة واحدة فقط."
+
+Do not allow quantity 3.
+
+If Customer selects Blue:
+- Allow quantities from 1 to 5.
+
+If Customer selects White:
+- Display Out of Stock.
+- Disable purchasing.
+
+Validate stock during:
+1. Product Details quantity selection.
+2. Add to Cart.
+3. Shopping Cart quantity changes.
+4. Checkout.
+5. Order creation.
+
+When an order is successfully placed, decrease stock.
+
+When a Pending order is cancelled, restore stock exactly once.
+
+When stock reaches zero, update availability immediately across the entire website.
+
+Use one consistent source of truth for stock.
+
+---
+
+# 24. INTERACTIVE BEHAVIOR REQUIREMENTS
+
+This website must feel like a working application.
+
+Every action must have visible results.
+
+Examples:
+
+### Admin adds a product
+
+Admin → Add Product → Enter details → Upload images → Add colors and stock → Save
+
+Result:
+- Product appears in Manage Products.
+- Product appears in Home/Products when active.
+- Product Details displays its colors and images.
+- Search and filters include the new product.
+
+### Admin adds a category
+
+Admin → Manage Categories → Add Category
+
+Result:
+- Category appears in category list.
+- Category appears in product creation form.
+- Category appears in storefront filtering.
+
+### Customer places an order
+
+Customer → Products → Product Details → Select Color → Add to Cart → Checkout → Place Order
+
+Result:
+- Order created.
+- Stock decreased.
+- Cart cleared.
+- Order appears in My Orders.
+- Order appears in Admin Manage Orders.
+- Admin Dashboard updates.
+
+### Admin updates order status
+
+Admin → Manage Orders → Change Pending to Processing
+
+Result:
+- Order status updates.
+- Customer sees Processing.
+- Cancel Order is disabled.
+
+### Customer cancels an order
+
+Customer → My Orders → Cancel eligible Pending order
+
+Result:
+- Order becomes Cancelled.
+- Stock restored.
+- Order disappears from Customer My Orders.
+- Order remains in Admin Manage Orders.
+
+### Theme change
+
+User clicks theme toggle.
+
+Result:
+- Entire website changes theme.
+- Selection remains after refresh.
+
+---
+
+# 25. DEMO DATA
+
+Initialize the store with realistic electronics products.
+
+Include at least 15–20 products across:
+- Headphones
+- Keyboards
+- Mice
+- Chargers
+- Smartwatches
+
+Use realistic brand names and product images.
+
+Include products with:
+- Multiple colors
+- Different stock quantities
+- Out-of-stock variants
+- Multiple gallery images
+- Different prices
+- Different brands
+
+Include:
+- A few demo Customers
+- A few demo orders in different statuses
+- Low-stock products
+- At least one inactive product for Admin testing
+
+Use realistic Jordanian Dinar prices.
+
+The sample data must be editable through Admin, not hardcoded into each page.
+
+---
+
+# 26. RESPONSIVE DESIGN
+
+Make all pages responsive.
+
+## Desktop
+
+- Full navigation
+- Sidebar filters
+- Multi-column product grids
+- Admin tables
+- Right-side Admin sidebar
+
+## Tablet
+
+- Adapted grids
+- Collapsible filters
+- Responsive forms
+
+## Mobile
+
+- Hamburger navigation
+- Compact cart icon
+- Responsive product cards
+- Mobile-friendly checkout
+- Stacked forms
+- Scrollable or card-based Admin tables
+- Touch-friendly buttons
+
+Ensure RTL works correctly at all screen sizes.
+
+---
+
+# 27. QUALITY AND UX REQUIREMENTS
+
+Implement:
+- Required field validation
+- Clear Arabic error messages
+- Success notifications
+- Confirmation modals for destructive actions
+- Empty states
+- Loading feedback where appropriate
+- Disabled states
+- Accessible form labels
+- Keyboard-friendly controls
+- Proper image alt text
+- Readable text contrast
+- Consistent button behavior
+- Correct RTL layouts
+- Clear navigation
+
+Do not leave unfinished placeholder sections.
+
+Do not use buttons that only display generic alerts instead of performing the actual operation.
+
+Do not use fake checkout success without creating an order and updating stock.
+
+Do not use fake product management actions that do not update storefront data.
+
+---
+
+# 28. DATA STRUCTURE
+
+Use a coherent client-side data model equivalent to these future database tables:
+
+### users
+- user_id
+- role
+- full_name
+- email
+- password (demo only)
+- created_at
+
+### categories
+- category_id
+- category_name
+
+### products
+- product_id
+- category_id
+- product_name
+- brand
+- description
+- price
+- is_active
+- created_at
+- updated_at
+
+### product_variants
+- variant_id
+- product_id
+- color_name
+- stock_quantity
+
+### product_images
+- image_id
+- product_id
+- image_path
+- is_primary
+- created_at
+
+### orders
+- order_id
+- user_id
+- recipient_name
+- phone
+- city
+- full_address
+- order_notes
+- total_amount
+- payment_method
+- order_status
+- created_at
+
+### order_items
+- order_item_id
+- order_id
+- variant_id
+- product_name_snapshot
+- color_snapshot
+- unit_price
+- quantity
+- subtotal
+
+The cart should be managed separately in browser session state, not as a database table.
+
+---
+
+# 29. IMPORTANT LIMITATIONS
+
+This is a browser-based interactive prototype.
+
+Do not connect any real database or external backend.
+
+All operations should be simulated with persistent local browser data.
+
+The prototype should demonstrate the complete customer and Admin workflow.
+
+It is not expected to provide production-grade authentication, real payment processing, server-side inventory locking, or synchronization across different devices.
+
+However, within the same browser's demo data, all functionality must remain logically consistent.
+
+Use clear architecture so that the prototype can later be implemented with PHP Procedural and MySQL.
+
+---
+
+# 30. FINAL ACCEPTANCE CHECKLIST
+
+Before considering the website complete, verify that:
+
+- All 16 pages exist.
+- All pages are Arabic RTL.
+- Light and Dark modes work everywhere.
+- Theme selection persists after refresh.
+- Navigation works.
+- Search works.
+- Filters work together.
+- Sorting works.
+- Product details work.
+- Image galleries work.
+- Color selection works.
+- Stock validation works.
+- Cart works.
+- Registration works.
+- Login works.
+- Role-based redirects work.
+- Checkout works.
+- Order creation works.
+- Stock decreases after ordering.
+- My Orders shows only active orders.
+- Customer cancellation rules work.
+- Cancelled orders restore stock.
+- Admin Dashboard statistics update.
+- Admin can add products.
+- Admin can edit products.
+- Admin can hide/reactivate products.
+- Admin can manage product images.
+- Admin can manage colors and stock.
+- Admin can add/edit/delete eligible categories.
+- Admin can view all orders.
+- Admin can update order statuses.
+- Admin can search and view Customers.
+- Changes persist after refresh.
+- Customer and Admin views stay synchronized within the local demo.
+- Mobile layout works.
+- No visible buttons are nonfunctional.
+
+**FINAL INSTRUCTION:**
+
+Build the complete TechZone website as a polished, production-quality-looking, fully interactive Arabic RTL e-commerce prototype.
+
+Prioritize actual functionality, correct business rules, beautiful UI, reusable components, realistic data, and seamless interaction between Customer and Admin.
+
+Do not stop after generating the homepage or static layouts.
+
+Implement all specified pages, connect them, and make the complete workflow testable without any database or backend.
