@@ -6,8 +6,7 @@ import { defineConfig } from 'vite';
 export default defineConfig(({ mode }) => {
   return {
     plugins: [react(), tailwindcss()],
-    base: './', // تم تعديلها لتصبح نسبية وتمنع الشاشة البيضاء نهائياً
-    resolve: {
+    base: '/Techzone/', resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
       },
