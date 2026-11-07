@@ -1,0 +1,6 @@
+{
+  "name": "TechZone | تيك زون",
+  "description": "متجر إلكترونيات أردني تفاعلي حديث متكامل باللغة العربية مع لوحة تحكم إدارية ونظام مخزون وطلبات حي.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
